@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --verde: #11422F;
+  --verdeClaro: #598D6C;
+  --gelo: #FFFCF0;
+  --branco: #FFFFF7;
+  --preto: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+.displayNone {
+  display: none;
+}
+
+aside, ul {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+
+aside {
+  background-color: var(--verde);
+  height: 100vh;
+  width: 20vw;
+  position: fixed;
+  left: 0;
+}
+aside ul, aside li {
+  width: 20vw;
+}
+aside ul {
+  height: 100vh;
+}
+aside ul li, aside ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+aside ul li {
+  height: 25%;
+}
+aside ul li a {
+  height: 100%;
+  width: 100%;
+  background-color: var(--verde);
+  text-decoration: none;
+  color: var(--branco);
+  transition: background-color 0.5s, width 0.5s;
+}
+aside ul li a:hover {
+  background-color: var(--verdeClaro);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+aside ul li a img {
+  filter: brightness(0) invert(1);
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--branco);
+}
+.container main {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  height: 100vh;
+  width: 80vw;
+  padding-top: 5vh;
+}
+.container main .box {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  gap: 2vh;
+  margin-top: 10vh;
+}
+.container main .box .gasto {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  width: 500px;
+  height: 150px;
+  border: 3px solid var(--verdeClaro);
+  border-radius: 10px;
+}
+.container main .box .lucro {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  width: 600px;
+  height: 150px;
+  background-color: var(--white);
+  border: 3px solid var(--verdeClaro);
+  border-radius: 10px;
+}
+.container main .menu {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: row;
+  margin-top: 5vh;
+  gap: 2vw;
+}
+.container main .menu .fazenda,
+.container main .menu .roi,
+.container main .menu .pe {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  height: 150px;
+  width: 250px;
+  background-color: var(--white);
+  border: 3px solid var(--verdeClaro);
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=financeiro.css.map */
