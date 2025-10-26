@@ -1,6 +1,6 @@
 <?php 
-    session_start();
     include_once('../conexao.php');
+    include_once('../verifica_sessao.php');
 
     $error = "";
 
@@ -13,7 +13,7 @@
             $stmt -> execute([":email" => $email]);
             $usuario = $stmt -> fetch(PDO::FETCH_ASSOC);
 
-            if ($user && password_verify($senha, $usuario['senha'])) {
+            if ($usuario && password_verify($senha, $usuario['senha'])) {
                 $_SESSION['id_proprietario'] = $usuario['id_proprietario'];
                 $_SESSION['email_proprietario'] = $usuario['email_proprietario'];
                 $_SESSION['nome_proprietario'] = $usuario['nome_proprietario'];
@@ -39,6 +39,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="shortcut icon" href="../assets/img/plantar.png" type="image/x-icon">
     <title>Login</title>
 </head>
 
@@ -51,10 +52,24 @@
                 <input type="password" name="senha" placeholder="Senha" required class="inputs">
                 <input type="submit" name="logar" value="Entrar" class="submit">
                 <u>Não possui uma conta? <a href="cadastro_proprietario.php">Cadastrar</a></u>
-
-                <?php if($error != "") { echo "<p style='color:red;'>$error</p>"; } ?>
+                <p class="erro"></p>
             </form>
         </div>
     </div>
+
+    <script>
+        const errorMsg = <?php echo json_encode($error); ?>;
+
+        if (errorMsg) {
+            const errorElement = document.querySelector(".erro");
+            errorElement.textContent = errorMsg;
+            errorElement.style.display = "block";
+
+            errorElement.animate([{ opacity: 0 }, { opacity: 1 }], {
+            duration: 300,
+            fill: "forwards"
+        });
+    }
+    </script>
 </body>
 </html>
