@@ -1,0 +1,236 @@
+@use "reset";
+@use "mixins" as mx;
+@use "dashboard";
+
+.container {
+    @include mx.flexAlign(start, end, start);
+    background-color: var(--branco);
+
+    main {
+        @include mx.heightWidth(100vh, 80vw);
+        padding: 2rem;
+        background-color: #F9F6ED;
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+
+            .card {
+                flex: 0 0 22%;
+                height: 190px;
+                background-color: #fff;
+                border: 2px solid #A3C9A8;
+                border-radius: 10px;
+                padding: 1.5rem;
+                text-align: center;
+                color: #2D4739;
+
+                h3 {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    margin-bottom: 0.5rem;
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            margin-bottom: 2rem;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                column-gap: 1vw;
+                width: 200px;
+                height: 70px;
+                border: none;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: bold;
+                color: #fff;
+                background-color: #2D4739;
+                cursor: pointer;
+                transition: 0.3s;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    object-fit: contain;
+                }
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+
+        .table-container {
+            overflow-y: scroll;
+            background-color: #fff;
+            border: 2px solid #A3C9A8;
+            border-radius: 10px;
+            padding: 1rem;
+            height: 30vh;
+
+            h3 {
+                margin-bottom: 1rem;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                th,
+                td {
+                    padding: 0.8rem;
+                    text-align: left;
+                    border-bottom: 1px solid #ccc;
+
+                    button {
+                        background: transparent;
+                        border: none;
+                        cursor: pointer;
+
+                        img {
+                            width: 35px;
+                            height: 35px;
+                            transition: transform 0.2s ease;
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+
+                th {
+                    background-color: #E8F0E8;
+                }
+            }
+        }
+    }
+}
+
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .modal {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        padding: 2rem 3rem;
+        text-align: center;
+        animation: slideIn 0.3s ease;
+        max-width: 400px;
+        width: 90%;
+
+        h2 {
+            font-size: 1.2rem;
+            color: #2D4739;
+            margin-bottom: 1.5rem;
+
+            span {
+                color: #FA5252;
+                font-weight: bold;
+            }
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            button {
+                padding: 0.7rem 1.5rem;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: 0.2s;
+
+                &#confirm-delete {
+                    background-color: #7bbd83;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #6c9975;
+                    }
+                }
+
+                &#cancel-delete {
+                    background-color: #FA5252;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #e14a4a;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        main {
+            @include mx.heightWidth(auto, 100%);
+            padding: 1.5rem;
+
+            .cards {
+                justify-content: center;
+
+                .card {
+                    flex: 0 0 45%;
+                    height: auto;
+                    padding: 1rem;
+
+                    h3 {
+                        font-size: 1rem;
+                    }
+
+                    p {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+
+            .table-container {
+                height: auto;
+            }
+        }
+    }
+}
